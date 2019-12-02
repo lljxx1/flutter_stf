@@ -41,7 +41,7 @@ class _PhoneSate extends State<PhonePage> {
   @override
   void initState() {
 
-    channel.sink.add("size 692x692");
+    channel.sink.add("size  692x692");
     channel.sink.add("on");
 
 //    channel.stream.listen((message) {
@@ -59,10 +59,23 @@ class _PhoneSate extends State<PhonePage> {
     super.initState();
   }
 
-   addImage(message) async {
-     ui.Codec codec = await ui.instantiateImageCodec(message);
-     ui.FrameInfo frame = await codec.getNextFrame();
-     paintList.add(frame.image);
+   Future<ui.Image> addImage(message) async {
+
+     print(message);
+      if(message is String){
+        print(message);
+        return null;
+      }
+      ui.Codec codec = await ui.instantiateImageCodec(message);
+      ui.FrameInfo frame = await codec.getNextFrame();
+      return frame.image;
+  }
+
+  @override
+  void dispose() {
+    channel.sink.close();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
