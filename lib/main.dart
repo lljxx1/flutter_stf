@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MyApp());
+import './Phone.dart';
 
+void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -126,45 +127,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   Widget mainView(){
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-          ListTile(
-            title: Text("test"),
-            subtitle: Text("subtitle"),
-          ),
-        ],
+      body: Center(
+        child: RaisedButton(onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (c) {
+              return PhonePage();
+            }));
+        },
+        child: Text('open'),),
       ),
       bottomNavigationBar: BottomAppBar(
           child: Row(
@@ -200,33 +169,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     // than having to individually change instances of widgets.
 
     return Scaffold(
-      body: AnimatedBuilder(animation: animationController, builder: (BuildContext context, Widget child) {
-        return CustomMultiChildLayout(
-            children: <Widget>[
-              LayoutId(
-                id: _ExpandableSlot.body,
-                child: mainView(),
-              ),
-              LayoutId(
-                id: _ExpandableSlot.bottomBar,
-                child: Container(
-                  color: Colors.lightBlue,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(icon: Icon(Icons.close), onPressed: (){
-                        animationController.fling(velocity: -1);
-                        opend = false;
-                      },)
-                    ],
-                  ),
-                ),
-              )
-            ],
-            delegate: _ExpandableLayout(
-                layoutOffetProgress: animationController.value
-            )
-        );
-      }),
+      body: Center(
+        child: RaisedButton(onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (c) {
+            return PhonePage();
+          }));
+        },
+          child: Text('open'),),
+      ),
     );
 
   }
